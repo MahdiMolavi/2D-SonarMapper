@@ -34,6 +34,7 @@ In a terminal with your ROS2 workspace sourced:
 
 
 ros2 run sonar_lidar sonar
+
 This node reads the serial data and publishes it as sensor_msgs/msg/LaserScan on the /scan topic.
 
 4. Start Static Transform Publisher
