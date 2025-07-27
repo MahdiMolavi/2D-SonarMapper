@@ -36,7 +36,7 @@ class SerialLaserScanNode(Node):
         self.laser_msg.range_min = 0.02
         self.laser_msg.range_max = 10.0
 
-        # ساخت broadcaster برای TF
+       
         self.tf_broadcaster = TransformBroadcaster(self)
 
         self.timer = self.create_timer(0.1, self.timer_callback)
@@ -46,7 +46,7 @@ class SerialLaserScanNode(Node):
         t.header.stamp = self.get_clock().now().to_msg()
         t.header.frame_id = 'map'           
         t.child_frame_id = 'laser_frame'    
-        # تبدیل صفر (ثابت)
+        
         t.transform.translation.x = 0.0
         t.transform.translation.y = 0.0
         t.transform.translation.z = 0.0
