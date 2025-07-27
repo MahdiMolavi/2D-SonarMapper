@@ -22,20 +22,7 @@ Upload the [`2D_Map_Sonar.ino`](./2D_Map_Sonar.ino) sketch to your **Arduino or 
 
 This program continuously rotates a servo motor and sends angle-distance pairs over the serial port in the following format:
 
-angle distance\n
 
-makefile
-Copy
-Edit
-
-Example:
-45 78
-46 80
-...
-
-perl
-Copy
-Edit
 
 ### 2. Connect the Board
 
@@ -45,26 +32,23 @@ Connect your microcontroller via USB. Identify the serial port (e.g., `/dev/ttyU
 
 In a terminal with your ROS2 workspace sourced:
 
-```bash
+
 ros2 run sonar_lidar sonar
 This node reads the serial data and publishes it as sensor_msgs/msg/LaserScan on the /scan topic.
 
 4. Start Static Transform Publisher
 You need a static transform between map and laser_frame:
 
-bash
-Copy
-Edit
+
 ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map laser_frame
+
 🖥️ Visualize in RViz2
 To see the scan:
 
 Launch RViz2:
 
-bash
-Copy
-Edit
 rviz2
+
 In RViz:
 
 Set Fixed Frame to map
@@ -75,17 +59,8 @@ Set the topic to /scan
 
 You should now see a 2D scan generated from the ultrasonic sensor, emulating a LiDAR sweep.
 
-📁 File Structure
-rust
-Copy
-Edit
-2D-SonarMapper/
-│
-├── 2D_Map_Sonar.ino        ← Arduino sketch for ESP32/Arduino
-├── sonar_lidar/            ← ROS2 package with node for publishing scan
-│   └── sonar.cpp           ← Main C++ node that reads serial and publishes LaserScan
-└── README.md               ← Project documentation
-✅ Notes
+
+
 Make sure the serial port in sonar.cpp matches your board's port.
 
 You can modify the scanning resolution and angle range in the Arduino code.
