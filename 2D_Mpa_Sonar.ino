@@ -1,6 +1,5 @@
 #include <Arduino.h>
-#include <ESP32Servo.h>   // کتابخانه مخصوص ESP32
-
+#include <ESP32Servo.h>   
 const int echoPin = 2;
 const int trigPin = 4;
 const int servoPin = 15;
@@ -12,9 +11,9 @@ void setup() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
-  // ⚠️ ESP32 نیاز به این تنظیمات داره:
-  myServo.setPeriodHertz(50);         // فرکانس استاندارد سروو
-  myServo.attach(servoPin, 500, 2400); // min/max pulse width in microseconds
+
+  myServo.setPeriodHertz(50);         
+  myServo.attach(servoPin, 500, 2400); 
 }
 
 float getDistance() {
